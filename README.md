@@ -32,6 +32,13 @@ dependencies: [
 
 [Swift Package Manager](https://swift.org/package-manager/) is a tool for managing the distribution of Swift code. It’s integrated with the Swift build system to automate the process of downloading, compiling, and linking dependencies.
 
+### CocoaPods
+
+[CocoaPods](https://cocoapods.org) is a dependency manager for Cocoa projects. For usage and installation instructions, visit their website. To integrate VPOnboardingKit into your Xcode project using CocoaPods, specify it in your `Podfile`:
+
+```ruby
+pod 'VPOnboardingKit'
+```
 ### Manually
 
 * Clone or download the package's repository to your machine.
