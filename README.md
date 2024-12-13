@@ -52,7 +52,7 @@ pod 'VPOnboardingKit'
 
 ## Usage
 
-There are 3 ways to handle VPOnboardingKit Actions, choose which you prefer: 
+There are 3 ways to handle VPOnboardingKit actions. Choose the **ONE** you prefer: 
 
 ### Publishers
 
