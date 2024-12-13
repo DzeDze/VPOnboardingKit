@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		02BB82942D0ACE7D00D15211 /* VPOnboardingKit in Frameworks */ = {isa = PBXBuildFile; productRef = 02BB82932D0ACE7D00D15211 /* VPOnboardingKit */; };
+		022B42A42D0CE34800649A90 /* VPOnboardingKit in Frameworks */ = {isa = PBXBuildFile; productRef = 022B42A32D0CE34800649A90 /* VPOnboardingKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,7 +40,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				02BB82942D0ACE7D00D15211 /* VPOnboardingKit in Frameworks */,
+				022B42A42D0CE34800649A90 /* VPOnboardingKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -91,7 +91,7 @@
 			);
 			name = SampleVPOnboardingKit;
 			packageProductDependencies = (
-				02BB82932D0ACE7D00D15211 /* VPOnboardingKit */,
+				022B42A32D0CE34800649A90 /* VPOnboardingKit */,
 			);
 			productName = SampleVPOnboardingKit;
 			productReference = 025560FE2D0ACAA700E1AD4A /* SampleVPOnboardingKit.app */;
@@ -122,7 +122,7 @@
 			mainGroup = 025560F52D0ACAA700E1AD4A;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				02BB82922D0ACE7D00D15211 /* XCRemoteSwiftPackageReference "VPOnboardingKit" */,
+				022B42A22D0CE34800649A90 /* XCLocalSwiftPackageReference "../../VPOnboardingKit" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 025560FF2D0ACAA700E1AD4A /* Products */;
@@ -361,21 +361,16 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCRemoteSwiftPackageReference section */
-		02BB82922D0ACE7D00D15211 /* XCRemoteSwiftPackageReference "VPOnboardingKit" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/DzeDze/VPOnboardingKit.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.1.1;
-			};
+/* Begin XCLocalSwiftPackageReference section */
+		022B42A22D0CE34800649A90 /* XCLocalSwiftPackageReference "../../VPOnboardingKit" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ../../VPOnboardingKit;
 		};
-/* End XCRemoteSwiftPackageReference section */
+/* End XCLocalSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		02BB82932D0ACE7D00D15211 /* VPOnboardingKit */ = {
+		022B42A32D0CE34800649A90 /* VPOnboardingKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 02BB82922D0ACE7D00D15211 /* XCRemoteSwiftPackageReference "VPOnboardingKit" */;
 			productName = VPOnboardingKit;
 		};
 /* End XCSwiftPackageProductDependency section */

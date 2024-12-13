@@ -1,5 +1,7 @@
 import UIKit
+import Combine
 
+// Protocol for handling VPOnboardingKit events via delegation
 public protocol VPOnboardingKitDelegate: AnyObject {
     func onboardNextButtonTapped(atIndex index: Int)
     func getStartedButtonTapped()
@@ -14,24 +16,19 @@ public class VPOnboardingKit {
     private let themeFont: UIFont
     private var rootVC: UIViewController?
     
+    // Delegate for handling events
     public weak var delegate: VPOnboardingKitDelegate?
     
+    // Combine publishers for reactive event handling
+    public var nextButtonPublisher = PassthroughSubject<Int, Never>()
+    public var getStartedButtonPublisher = PassthroughSubject<Void, Never>()
+    
+    // Closurre for handling events via callbacks
+    public var nextDidTapped: ((Int) -> Void)?
+    public var getStartedDidTapped: (() -> Void)?
+    
     private lazy var onboardingController: OnboardingViewController = {
-        let controller = OnboardingViewController(
-            slides: slides,
-            slideDurationInSeconds: slideDurationInSeconds,
-            tintColor: tintColor,
-            themeFont: themeFont
-        )
-        controller.modalTransitionStyle = .crossDissolve
-        controller.modalPresentationStyle = .fullScreen
-        controller.nextButtonDidTap = { [weak self] index in
-            self?.delegate?.onboardNextButtonTapped(atIndex: index)
-        }
-        controller.getStartedButtonDidTap = { [weak self] in
-            self?.delegate?.getStartedButtonTapped()
-        }
-        return controller
+        return makeOnboardingViewController()
     }()
     
     public init(
@@ -44,6 +41,32 @@ public class VPOnboardingKit {
         self.slideDurationInSeconds = slideDurationInSeconds
         self.tintColor = tintColor
         self.themeFont = themeFont
+    }
+    
+    private func makeOnboardingViewController() -> OnboardingViewController {
+        let controller = OnboardingViewController(
+            slides: slides,
+            slideDurationInSeconds: slideDurationInSeconds,
+            tintColor: tintColor,
+            themeFont: themeFont
+        )
+        controller.modalTransitionStyle = .crossDissolve
+        controller.modalPresentationStyle = .fullScreen
+        controller.nextButtonDidTap = { [weak self] index in
+            self?.delegate?.onboardNextButtonTapped(atIndex: index)
+            self?.nextButtonPublisher.send(index)
+            if let nextDidTapped = self?.nextDidTapped {
+                nextDidTapped(index)
+            }
+        }
+        controller.getStartedButtonDidTap = { [weak self] in
+            self?.delegate?.getStartedButtonTapped()
+            self?.getStartedButtonPublisher.send()
+            if let getStartedDidTapped = self?.getStartedDidTapped {
+                getStartedDidTapped()
+            }
+        }
+        return controller
     }
     
     public func lauchOnboarding(rootViewController: UIViewController) {
